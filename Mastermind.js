@@ -1,6 +1,5 @@
 "use strict";
-//*INTERFAZculo
-
+//*INTERFAZ
 //Elementos a usar
 const colors = ["red", "green", "blue", "yellow", "purple", "orange"];
 const game = document.querySelector(".game");
