@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastermind</title>
+    <link href="./Mastermind.css" rel="stylesheet"> 
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon.ico">
+</head>
+<body>
+    <div class="main">
+        <!--actual display of attempts-->
+        
+        <div class="game-flex">
+            <div class="game"><!--?[A]-->
+                <div class="blister">
+                    <div class="blister-slot slot"></div>
+                    <div class="blister-slot slot"></div>
+                    <div class="blister-slot slot"></div>
+                    <div class="blister-slot slot"></div>
+                </div>
+                <div class="checker">
+                    <div class="checker-slot"></div>
+                    <div class="checker-slot"></div>
+                    <div class="checker-slot"></div>
+                    <div class="checker-slot"></div>
+                </div>
+            <button class="check-button">Check</button>
+        </div>
+        </div>
+    
+        <!--picker-->
+        <div class="picker">
+            <div class="picker-slot slot"></div>
+            <div class="picker-slot slot"></div>
+            <div class="picker-slot slot"></div>
+            <div class="picker-slot slot"></div>
+            <div class="picker-slot slot"></div>
+            <div class="picker-slot slot"></div>
+        </div><!--?[B]-->
+        <!--settings and info-->
+        <div class="menu">
+<!--             <span>Code Length <input type="number" name="CodeLength" id="CodeLength" min="5" max="8"></span> -->
+            <span >Duplicates<input type="checkbox" name="Duplicates" id="Duplicates"></span>
+            <span><button class="start">Start</button> <a href="" class="help">Help</a></span>
+        </div><!--?[D]-->
+    </div>
+    <script src="./Mastermind.js"></script>
+</body>
+</html>
+
+<!-- GPT version -->

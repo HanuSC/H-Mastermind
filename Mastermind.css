@@ -1,0 +1,117 @@
+@font-face {
+    font-family: Bahaus93;
+    src: url(./assets/font/BAUHS93.TTF);
+}
+
+body {
+    font-family: Bahaus93, Arial, Helvetica, sans-serif;
+}
+
+.main, .game-flex {
+    border: 2px solid black;
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+}
+.game-flex {
+    border: none;
+    flex-direction: column-reverse;
+    min-width: 300px;
+    margin: 2px;
+}
+/*?A*/
+.game {
+    display: flex;
+    flex-direction: row;
+    margin: 4px 2px;
+   
+}
+    .blister, .results {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 60%;
+        margin: 1px;
+        height: 28px;
+        
+    }
+    
+        .slot {
+            border: solid black;
+            border-radius: 50%;
+            background-color: white;  
+            margin: auto 3px;
+            height: 30px;
+            width: 30px;
+                   
+        }
+    .checker {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 15%;
+        margin: 1px;
+        justify-content:stretch
+    }
+    .checker-slot {
+        margin: 1px;
+        border: solid black;
+    }
+
+    .check-button, .start {
+        font-family: Bahaus93;
+        margin: auto;
+        border-radius: 12%;
+        border: none;
+        
+        
+    }
+    .check-button {
+        display: none;
+    }
+        .check-button:hover, .start:hover {
+            background-color: aqua;
+        }
+
+/*?B*/
+    .picker {
+        display: flex;
+        flex-direction: row;
+    }
+
+        .picker-slot {
+            margin: 5px auto;
+        
+        }
+
+
+/*?D*/
+.menu {
+    order:2;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    height: fit-content;
+    margin: 2px
+}
+    span {
+        margin: auto;
+        
+    }
+    #CodeLength {
+        max-width: 25px;
+    }
+
+    #Duplicates {
+        width: 25px;
+        height: 20px;
+    }
+
+    .help {
+        touch-action: none;
+      user-select: none;
+    }
+    .help:hover {
+        cursor: pointer;
+    }
+
+/* GPT version */
