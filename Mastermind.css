@@ -5,8 +5,12 @@
 
 body {
     font-family: Bahaus93, Arial, Helvetica, sans-serif;
+    background-color: white;
 }
 
+.main {
+    background-color: gray;
+}
 .main, .game-flex {
     border: 2px solid black;
     max-width: 300px;
