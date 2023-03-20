@@ -229,6 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //activar duplicados
   function enableDuplicate(e) {
+    console.log(secretCode)
     Mastermind.duplicatesSwitch = e.target.checked;
     restart();
   }
