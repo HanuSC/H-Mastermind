@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderColors(colores, elemento) {
     for (let i = 0; i < elemento.length; i++) {
       elemento[i].style.backgroundColor = colores[i];
+      elemento[i].style.boxShadow = "inset 0 0 10px black";
     }
   }
   //Alertas (Partida Ganada, Perdida, Errores)
@@ -209,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .forEach((slot) => (slot.style.backgroundColor = "white"));
     document
       .querySelectorAll(".checker-slot")
-      .forEach((slot) => (slot.style.backgroundColor = "gray"));
+      .forEach((slot) => (slot.style.backgroundColor = "rgb(170, 60, 0)"));
     checkButtons.forEach((btn) => (btn.style.display = "none"));
   }
 
