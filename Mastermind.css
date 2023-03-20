@@ -127,5 +127,13 @@ body {
         margin-left: 30px;
     }
 
+    .alerta {
+        border-radius: 5px;
+        padding: 5px;
+        color: whitesmoke;
+        max-width: 280px;
+        align-self: center;
+        text-align: center;
+    }
 
 /* GPT version */

@@ -16,11 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!code.includes([color, color])) code.push(color);
         }
         return code;
-        /* let code = [];
-        while (code.length < 4) {
-          code.push(Mastermind.colors[Math.floor(Math.random() * 6)]);
-        }
-        return code; */
       },
       off_duplicates: () => {
         let code = [];
@@ -34,17 +29,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     insertarColor: (slot_color) => {
       if (!Mastermind.duplicatesSwitch) {
-        if (Mastermind.blisterColors.find((c) => c === slot_color)) {
+        if (Mastermind.blisterColors.includes(slot_color)) {
           return;
         }
-        Mastermind.blisterColors[Mastermind.currentIndex] = slot_color;
+/*         Mastermind.blisterColors[Mastermind.currentIndex] = slot_color;
         Mastermind.currentIndex = (Mastermind.currentIndex + 1) % 4;
-        return;
+        return; */
       }
-      if (Mastermind.blisterColors.filter(c =>  c === slot_color).length >= 2) {
+      else if (Mastermind.blisterColors.filter(c =>  c === slot_color).length >= 2) {
         return;
       };
-      
       Mastermind.blisterColors[Mastermind.currentIndex] = slot_color;
       Mastermind.currentIndex = (Mastermind.currentIndex + 1) % 4;
     },
@@ -139,13 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let alerta = document.createElement("P");
     alerta.classList.add("alerta");
     alerta.style.backgroundColor = color;
-    alerta.style.borderRadius = "5px";
-    alerta.style.padding= "5px";
-    alerta.style.font
-    alerta.style.color = "whitesmoke";
-    alerta.style.maxWidth = "280px";
-    alerta.style.alignSelf = "center";
-    alerta.style.textAlign = "center";
     alerta.textContent = texto;
     gameFlex.appendChild(alerta);
   }
@@ -162,7 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function resultados(texto, color) {
     alerta(texto, color);
     mostrarResultados();
-    checkButtons.forEach((btn) => (btn.style.display = "none"));
+    backspace.style.display = "none";
+    checkButtons.forEach((btn) => (btn.style.display = "none"))
+    startButton.textContent = "Reiniciar";
   }
 
   //Chequeo de intento
@@ -188,9 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     if (Mastermind.blisterindex >= 9) {
-      resultados("PERDISTE!", "purple");
-      backspace.style.display = "none";
-      checkButtons.forEach((btn) => (btn.style.display = "none"));
+      resultados("PERDISTE!", "purple");;
       return;
     }
     //siguiente intento
