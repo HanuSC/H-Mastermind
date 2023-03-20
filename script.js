@@ -12,9 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
       on_duplicates: () => {
         let code = [];
         while (code.length < 4) {
-          code.push(Mastermind.colors[Math.floor(Math.random() * 6)]);
+          let color = Mastermind.colors[Math.floor(Math.random() * 6)];
+          if (!code.includes([color, color])) code.push(color);
         }
         return code;
+        /* let code = [];
+        while (code.length < 4) {
+          code.push(Mastermind.colors[Math.floor(Math.random() * 6)]);
+        }
+        return code; */
       },
       off_duplicates: () => {
         let code = [];
