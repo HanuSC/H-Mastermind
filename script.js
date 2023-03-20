@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   //Objeto con la logica del juego
   const Mastermind = {
-    colors: ["red", "green", "blue", "yellow", "purple", "orange"],
+    colors: ["red", "green", "blue", "yellow", "purple", "aqua"],
     blisterColors: [],
     currentIndex: 0,
     blisterindex: 0,
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ? resultado.push("black")
           : codigo.includes(intento[i])
           ? resultado.push("white")
-          : resultado.push("rgb(170, 60, 0)");
+          : resultado.push("transparent");
       }
       return resultado;
     },
@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderColors(colores, elemento) {
     for (let i = 0; i < elemento.length; i++) {
       elemento[i].style.backgroundColor = colores[i];
-      elemento[i].style.boxShadow = "inset 0 0 10px black";
     }
   }
   //Alertas (Partida Ganada, Perdida, Errores)
@@ -156,10 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
   //Chequeo de intento
   function nextChance(e) {
     e.preventDefault();
-    let intento = Mastermind.checarIntento(
+    let intento = shuffle(Mastermind.checarIntento(
       Mastermind.blisterColors,
       secretCode
-    );
+    ));
 
     if (Mastermind.blisterColors.length < 4) {
       alerta("Debes llenarlo completamente", "red");
@@ -210,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .forEach((slot) => (slot.style.backgroundColor = "white"));
     document
       .querySelectorAll(".checker-slot")
-      .forEach((slot) => (slot.style.backgroundColor = "rgb(170, 60, 0)"));
+      .forEach((slot) => (slot.style.backgroundColor = "transparent"));
     checkButtons.forEach((btn) => (btn.style.display = "none"));
   }
 

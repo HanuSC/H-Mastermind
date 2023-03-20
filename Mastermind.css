@@ -1,15 +1,16 @@
 @font-face {
+    
     font-family: Bahaus93;
     src: url(./assets/font/BAUHS93.TTF);
 }
 
 body {
     font-family: Bahaus93, Arial, Helvetica, sans-serif;
-    background-color: white;
+    background: radial-gradient(white, whitesmoke, rgb(234, 233, 233), gray)
 }
 
 .main {
-    box-shadow: 6px 5px 5px black;;
+    box-shadow: 6px 5px 5px black;
     border-radius: 20px;
     background: radial-gradient( rgb(170, 60, 0), rgb(200, 40, 0))
 }
@@ -59,9 +60,6 @@ body {
         margin: 1px;
         justify-content:stretch
     }
-    .blister-slot {
-        box-shadow: inset 1px 3px 6px   rgb(170, 60, 0);
-    }
     .checker-slot {
         
         margin: 1px;
@@ -80,7 +78,8 @@ body {
         display: none;
     }
         .check-button:hover, .start:hover, .back:hover {
-            background-color: aqua;
+            background-color: rgb(43, 43, 43);
+            color: white;
         }
 
 /*?B*/
@@ -99,30 +98,34 @@ body {
 /*?D*/
 .menu {
     order:2;
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    height: fit-content;
-    margin: 2px
-}
-    span {
-        margin: auto;
-        
-    }
-    #CodeLength {
-        max-width: 25px;
-    }
+    display: flex;
+    flex-direction: row;
 
-    #Duplicates {
-        width: 25px;
-        height: 20px;
-    }
+}
 
     .help {
+        color: rgb(3, 3, 9);
         touch-action: none;
       user-select: none;
+      margin: 10px auto;
     }
     .help:hover {
+        color: white;
         cursor: pointer;
     }
+    .back {
+        font-size: 1em;
+        margin: 5px auto;
+    }
+    .start {
+        grid-column: span 2;
+       margin: 10px auto;
+        
+    }
+    .duplicates {
+        margin: 10px auto;
+        margin-left: 30px;
+    }
+
 
 /* GPT version */
