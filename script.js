@@ -217,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function restart() {
     clean();
     setCode();
+    Mastermind.currentIndex = 0;
     console.log(secretCode)
   }
 
