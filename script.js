@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   //Objeto con la logica del juego
   const Mastermind = {
-    colors: ["red", "green", "blue", "yellow", "purple", "aqua"],
+    colors: ["red", "green", "blue", "yellow", "darkmagenta", "aqua"],
     blisterColors: [],
     currentIndex: 0,
     blisterindex: 0,
@@ -173,11 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
     //muestra de matches
     renderColors(intento, checkers[Mastermind.blisterindex].children);
     if (Mastermind.checarPartida(intento, Mastermind.blisterindex)) {
-      resultados("GANASTE!", "green");
+      resultados("GANASTE!", "darkgreen");
       return;
     }
     if (Mastermind.blisterindex >= 9) {
-      resultados("PERDISTE!", "purple");;
+      resultados("PERDISTE!", "darkmagenta");;
       return;
     }
     //siguiente intento
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //eliminar el color
   function limpiarIntento() {
     console.log("limpiando...", Mastermind.blisterindex);
-    Mastermind.blisterColors.pop()
+    Mastermind.blisterColors.fill("white")
     renderColors(
       Mastermind.blisterColors,
       blisters[Mastermind.blisterindex].children
@@ -221,30 +221,17 @@ document.addEventListener("DOMContentLoaded", () => {
     clean();
     setCode();
     Mastermind.currentIndex = 0;
-    console.log(secretCode)
   }
 
   //activar duplicados
   function enableDuplicate(e) {
     Mastermind.duplicatesSwitch = e.target.checked;
-    console.log(Mastermind.duplicatesSwitch)
     restart();
   }
 
   //Eventos
 
   function eventos() {
-    console.log(Mastermind.duplicatesSwitch)
-
-    const numeros = [1,2,2,3,4,4,4,4,5,6,7,8,9]
-
-    const p_nros_d = (nro_d)=> {return numeros.filter(nro =>  nro === nro_d)}
-
-    console.log(p_nros_d(4).length)
-
-
-
-
     duplicates.addEventListener("click", enableDuplicate);
     startButton.addEventListener("click", restart);
     pickerSlots.forEach((slot) => slot.addEventListener("click", agregarColor));
