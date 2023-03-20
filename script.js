@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return code;
       },
     },
+
     insertarColor: (slot_color) => {
       if (!Mastermind.duplicatesSwitch) {
         if (Mastermind.blisterColors.find((c) => c === slot_color)) {
@@ -40,9 +41,14 @@ document.addEventListener("DOMContentLoaded", () => {
         Mastermind.currentIndex = (Mastermind.currentIndex + 1) % 4;
         return;
       }
+      if (Mastermind.blisterColors.filter(c =>  c === slot_color).length >= 2) {
+        return;
+      };
+      
       Mastermind.blisterColors[Mastermind.currentIndex] = slot_color;
       Mastermind.currentIndex = (Mastermind.currentIndex + 1) % 4;
     },
+
     checarIntento: (intento, codigo) => {
       const resultado = [];
       for (let i = 0; i < intento.length; i++) {
@@ -54,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return resultado;
     },
+
     checarPartida: (chequeoIntento, nroIntento) => {
       if (chequeoIntento.every((match) => match === "black")) {
         return true;
@@ -229,14 +236,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //activar duplicados
   function enableDuplicate(e) {
-    console.log(secretCode)
     Mastermind.duplicatesSwitch = e.target.checked;
+    console.log(Mastermind.duplicatesSwitch)
     restart();
   }
 
   //Eventos
 
   function eventos() {
+    console.log(Mastermind.duplicatesSwitch)
+
+    const numeros = [1,2,2,3,4,4,4,4,5,6,7,8,9]
+
+    const p_nros_d = (nro_d)=> {return numeros.filter(nro =>  nro === nro_d)}
+
+    console.log(p_nros_d(4).length)
+
+
+
+
     duplicates.addEventListener("click", enableDuplicate);
     startButton.addEventListener("click", restart);
     pickerSlots.forEach((slot) => slot.addEventListener("click", agregarColor));
