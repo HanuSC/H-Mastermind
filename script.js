@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //eliminar el color
   function limpiarIntento() {
     console.log("limpiando...", Mastermind.blisterindex);
-    Mastermind.blisterColors = ["white", "white", "white", "white"];
+    Mastermind.blisterColors.pop()
     renderColors(
       Mastermind.blisterColors,
       blisters[Mastermind.blisterindex].children
