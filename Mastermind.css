@@ -9,10 +9,12 @@ body {
 }
 
 .main {
-    background-color: gray;
+    box-shadow: 6px 5px 5px black;;
+    border-radius: 20px;
+    background: radial-gradient( rgb(170, 60, 0), rgb(200, 40, 0))
 }
 .main, .game-flex {
-    border: 2px solid black;
+   
     max-width: 300px;
     margin: auto;
     display: flex;
@@ -57,12 +59,16 @@ body {
         margin: 1px;
         justify-content:stretch
     }
+    .blister-slot {
+        box-shadow: inset 1px 3px 6px  gray
+    }
     .checker-slot {
+        
         margin: 1px;
         border: solid black;
     }
 
-    .check-button, .start {
+    .check-button, .start, .back {
         font-family: Bahaus93;
         margin: auto;
         border-radius: 12%;
@@ -73,7 +79,7 @@ body {
     .check-button {
         display: none;
     }
-        .check-button:hover, .start:hover {
+        .check-button:hover, .start:hover, .back:hover {
             background-color: aqua;
         }
 
@@ -84,6 +90,7 @@ body {
     }
 
         .picker-slot {
+            box-shadow: inset 0 0 10px black;
             margin: 5px auto;
         
         }

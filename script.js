@@ -1,6 +1,6 @@
 "use strict;";
 document.addEventListener("DOMContentLoaded", () => {
-//Objeto con la logica del juego
+  //Objeto con la logica del juego
   const Mastermind = {
     colors: ["red", "green", "blue", "yellow", "purple", "orange"],
     blisterColors: [],
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ? resultado.push("black")
           : codigo.includes(intento[i])
           ? resultado.push("white")
-          : resultado.push("gray");
+          : resultado.push("rgb(170, 60, 0)");
       }
       return resultado;
     },
@@ -55,6 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return false;
     },
   };
+  
+
   //codigo secreto al cargar la pag
   let secretCode = [];
   function setCode() {
@@ -81,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkButtons = document.querySelectorAll(".check-button");
   const startButton = document.querySelector(".start");
   const duplicates = document.querySelector("#Duplicates");
+  const backspace = document.querySelector(".back");
 
   //Funciones externas al HTML
   //shuffle an array
@@ -103,31 +106,30 @@ document.addEventListener("DOMContentLoaded", () => {
   //Inyectar colores del picker al blister
   function agregarColor(e) {
     Mastermind.insertarColor(e.target.style.backgroundColor);
-    for (
-      let i = 0;
-      i < blisters[Mastermind.blisterindex].children.length;
-      i++
-    ) {
-      blisters[Mastermind.blisterindex].children[i].style.backgroundColor =
-        Mastermind.blisterColors[i];
-    }
+    renderColors(
+      Mastermind.blisterColors,
+      blisters[Mastermind.blisterindex].children
+    );
+   
     if (Mastermind.blisterColors.length === 4) {
       checkButtons[Mastermind.blisterindex].style.display = "block";
     }
   }
-//inyectar colores en cada blister y checker
+  //inyectar colores en cada blister y checker
   function renderColors(colores, elemento) {
     for (let i = 0; i < elemento.length; i++) {
       elemento[i].style.backgroundColor = colores[i];
     }
   }
-//Alertas (Partida Ganada, Perdida, Errores)
+  //Alertas (Partida Ganada, Perdida, Errores)
   function alerta(texto, color) {
     let alerta = document.createElement("P");
     alerta.classList.add("alerta");
     alerta.style.backgroundColor = color;
     alerta.style.borderRadius = "5px";
-    alerta.style.color = "white";
+    alerta.style.padding= "5px";
+    alerta.style.font
+    alerta.style.color = "whitesmoke";
     alerta.style.maxWidth = "280px";
     alerta.style.alignSelf = "center";
     alerta.style.textAlign = "center";
@@ -143,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderColors(secretCode, code.children);
     gameFlex.appendChild(code);
   }
-//Alerta especial para partidas ganadas o perdidas
+  //Alerta especial para partidas ganadas o perdidas
   function resultados(texto, color) {
     alerta(texto, color);
     mostrarResultados();
@@ -165,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 3000);
       return;
     }
+
     //muestra de matches
     renderColors(intento, checkers[Mastermind.blisterindex].children);
     if (Mastermind.checarPartida(intento, Mastermind.blisterindex)) {
@@ -179,6 +182,18 @@ document.addEventListener("DOMContentLoaded", () => {
     Mastermind.blisterindex++;
     checkButtons[Mastermind.blisterindex].style.display = "block";
     checkButtons[Mastermind.blisterindex - 1].style.display = "none";
+    Mastermind.blisterColors = [];
+    Mastermind.currentIndex = 0;
+  }
+
+  //eliminar el color
+  function limpiarIntento() {
+    console.log("limpiando...", Mastermind.blisterindex);
+    Mastermind.blisterColors = ["white", "white", "white", "white"];
+    renderColors(
+      Mastermind.blisterColors,
+      blisters[Mastermind.blisterindex].children
+    );
     Mastermind.blisterColors = [];
     Mastermind.currentIndex = 0;
   }
@@ -202,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function restart() {
     clean();
     setCode();
+    console.log(secretCode)
   }
 
   //activar duplicados
@@ -217,6 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startButton.addEventListener("click", restart);
     pickerSlots.forEach((slot) => slot.addEventListener("click", agregarColor));
     checkButtons.forEach((btn) => btn.addEventListener("click", nextChance));
+    backspace.addEventListener("click", limpiarIntento);
   }
 
   eventos();
