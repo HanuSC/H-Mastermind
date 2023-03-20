@@ -189,6 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (Mastermind.blisterindex >= 9) {
       resultados("PERDISTE!", "purple");
+      backspace.style.display = "none";
+      checkButtons.forEach((btn) => (btn.style.display = "none"));
       return;
     }
     //siguiente intento
@@ -213,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //funcion para limpiar todos los elementos
   function clean() {
+    backspace.style.display = "block"
     document.querySelectorAll(".alerta").forEach((alerta) => alerta.remove());
     document.querySelectorAll(".result").forEach((result) => result.remove());
     Mastermind.blisterindex = 0;
